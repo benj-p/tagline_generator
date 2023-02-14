@@ -2,6 +2,8 @@
 
 The goal of this project is to get familiarized with the [OpenAI API](https://openai.com/api) by using its capabilities to generate taglines for products and services. It uses the [Ruby::OpenAI gem](https://github.com/alexrudall/ruby-openai) to access the API, and more specifically its completion endpoint.
 
+The live version of the app can be accessed here: https://tagline-generator.fly.dev/
+
 ## Stack
 
 * Rails 7.0.4
@@ -9,6 +11,7 @@ The goal of this project is to get familiarized with the [OpenAI API](https://op
 * Stimulus
 * Import Maps
 * Tailwind CSS
+* Fly.io
 
 ## Can I contribute?
 
