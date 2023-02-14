@@ -1,24 +1,15 @@
-# README
+## What is the Tagline Generator?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The goal of this project is to get familiarized with the [OpenAI API](https://openai.com/api) by using its capabilities to generate taglines for products and services. It uses the [Ruby::OpenAI gem](https://github.com/alexrudall/ruby-openai) to access the API, and more specifically its completion endpoint.
 
-Things you may want to cover:
+## Stack
 
-* Ruby version
+* Rails 7.0.4
+* Ruby 3.0.0
+* Stimulus
+* Import Maps
+* Tailwind CSS
 
-* System dependencies
+## Can I contribute?
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Of course, feel free to fork it and clone this repo! 😊 This project is open to anyone who would like to contribute, but please open an issue to discuss any change before submitting your PR.
