@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      dropShadow: {
+        'md': '0 0 6px rgba(0, 0, 0, 0.2)',
+      }
     },
   },
   plugins: [

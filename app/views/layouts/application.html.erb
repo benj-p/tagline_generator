@@ -11,9 +11,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5">
+  <body class="flex flex-col h-screen">
+    <main class="container mx-auto mt-16 md:mt-28 px-5 grow">
       <%= yield %>
     </main>
+    <footer class="text-center md:text-left text-blue-500 md:bg-blue-500 md:text-white">
+      <div class="container mx-auto my-12 px-5">
+        <%= link_to 'https://github.com/benj-p/tagline_generator', target: "_blank", class: "hover:drop-shadow-md" do %>
+          <i class="fa-brands fa-github text-4xl"></i>
+        <% end %>
+      </div>
+    </footer>
   </body>
 </html>

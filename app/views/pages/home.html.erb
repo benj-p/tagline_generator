@@ -1,7 +1,7 @@
 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">Try out our <span class="text-blue-500">OpenAI powered</span> tagline generator.</h1>
 
 <div data-controller='generate-tagline'>
-  <%= form_with url: generate_tagline_path, class: 'mt-10 flex flex-wrap	gap-2', data: { generate_tagline_target: 'form', action: 'submit->generate-tagline#generate'} do |f| %>
+  <%= form_with url: generate_tagline_path, class: 'mt-24 flex flex-wrap	gap-2', data: { generate_tagline_target: 'form', action: 'submit->generate-tagline#generate'} do |f| %>
     <%= f.text_field :content, placeholder: "Ice cream shop, electric cars, exotic plants...", class: "min-w-[80%] grow rounded", data: { generate_tagline_target: 'input' } %>
     <%= f.submit "Generate", class: "grow btn-primary", data: { generate_tagline_target: 'submit' } %>
   <% end %>
