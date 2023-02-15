@@ -1,6 +1,8 @@
 ## What is the Tagline Generator?
 
-The goal of this project is to get familiarized with the [OpenAI API](https://openai.com/api) by using its capabilities to generate taglines for products and services. It uses the [Ruby::OpenAI gem](https://github.com/alexrudall/ruby-openai) to access the API, and more specifically its completion endpoint.
+The Tagline Generator is a tool that helps you generate a tagline / slogan for just about anything.
+
+The goal of this project is to get familiarized with the [OpenAI API](https://openai.com/api) by using its capabilities to generate creative and relevant taglines. It uses the [Ruby::OpenAI gem](https://github.com/alexrudall/ruby-openai) to access the API, and more specifically its completion endpoint.
 
 The live version of the app can be accessed here: https://tagline-generator.fly.dev/
 
@@ -15,4 +17,4 @@ The live version of the app can be accessed here: https://tagline-generator.fly.
 
 ## Can I contribute?
 
-Of course, feel free to fork it and clone this repo! 😊 This project is open to anyone who would like to contribute, but please open an issue to discuss any change before submitting your PR.
+Of course, feel free to fork and clone this repo! 😊 This project is open to anyone who would like to contribute, please open an issue to discuss any change before submitting your PR.
