@@ -1,10 +1,38 @@
-<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">Try out our <span class="text-blue-500">OpenAI powered</span> tagline generator.</h1>
+<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl max-w-[840px]">Try out our <span class="text-blue-500">OpenAI powered</span> tagline generator.</h1>
 
 <div data-controller='generate-tagline'>
-  <%= form_with url: generate_tagline_path, class: 'mt-12 md:mt-24 flex flex-wrap	gap-2', data: { generate_tagline_target: 'form', action: 'submit->generate-tagline#generate'} do |f| %>
-    <%= f.text_field :content, placeholder: "Ice cream shop, electric cars, exotic plants...", class: "min-w-[80%] grow rounded", data: { generate_tagline_target: 'input' } %>
-    <%= f.submit "Generate", class: "grow btn-primary", data: { generate_tagline_target: 'submit' } %>
+  <%= form_with url: generate_tagline_path, class: 'mt-12 md:mt-16', data: { generate_tagline_target: 'form', action: 'submit->generate-tagline#generate'} do |f| %>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <%= f.text_field :content, placeholder: "Ice cream shop, electric cars, exotic plants...", class: "w-full md:w-1/2 rounded", data: { generate_tagline_target: 'input' } %>
+      <%= f.submit "Generate", class: "btn-primary w-full md:w-auto", data: { generate_tagline_target: 'submit' } %>
+    </div>
+
+    <h2 class="font-bold mb-4">
+      Advanced controls    
+      <i class="fa-solid fa-circle-info ml-2" data-tooltip-target="settings-tooltip"></i>
+      <div id="settings-tooltip" role="tooltip" class="max-w-sm md:max-w-lg absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-700 transition-opacity duration-300 bg-gray-100 rounded-lg shadow-sm opacity-0 tooltip">
+        The temperature and top_p settings control how deterministic the model is in generating a response.<br/>If you're asking it for a response where there's only one right answer, then you'd want to set these lower. If you're looking for more diverse responses, then you might want to set them higher.
+      </div>
+    </h2>
+
+    <div class="mb-6 flex flex-col w-full md:w-1/4" data-controller="slider-values">
+      <div class="flex justify-between mb-2">
+        <span>
+          <%= f.label :top_p, "top_p" %>
+        </span>
+        <span data-slider-values-target="displayValue"></span>
+
+      </div>
+      <%= f.range_field :top_p, in: 0..1, step: 0.1, value: 0.8, class: 'w-full', data: { slider_values_target: 'slider', action: 'input->slider-values#update'} %>
+    </div>
+    <div class="flex flex-col w-full md:w-1/4" data-controller="slider-values">
+      <div class="flex justify-between mb-2">
+        <%= f.label :temperature, "temperature" %>
+        <span data-slider-values-target="displayValue"></span>
+      </div>
+      <%= f.range_field :temperature, in: 0..2, step: 0.1, value: 1, class: 'w-full', data: { slider_values_target: 'slider', action: 'input->slider-values#update'} %>
+    </div>
   <% end %>
 
-  <span id="tagline" class="mt-10 text-2xl inline-block" data-generate-tagline-target="tagline"></span>
+  <span id="tagline" class="mt-10 md:mt-24 text-2xl inline-block" data-generate-tagline-target="tagline"></span>
 </div>

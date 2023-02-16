@@ -10,4 +10,12 @@
   .btn-primary.disabled {
     @apply cursor-default bg-gray-400 border-gray-400;
   }
+
+  .tooltip {
+    left: 1rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    .tooltip { left: 2rem !important; }
+  }
 }
