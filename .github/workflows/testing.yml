@@ -1,0 +1,49 @@
+name: Run tests
+
+# triggers on
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [synchronize, opened]
+
+jobs:
+  test:
+    env:
+      RAILS_ENV: test
+      NODE_ENV: test
+      OPEN_AI_SECRET_KEY: ${{secrets.OPEN_AI_SECRET_KEY}}
+    runs-on: ubuntu-latest # runner
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout repository # copies repo in runner
+        uses: actions/checkout@v3 # short for https://github.com/actions/checkout
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1 # short for https://github.com/ruby/setup-ruby
+        with:
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+      - name: Prepare DB
+        run: |
+          cp config/database.github.yml config/database.yml
+          bundle exec rails db:create db:migrate
+      - name: Precompile assets
+        run: bundle exec rails assets:precompile
+      - name: Run tests
+        run: bundle exec rspec
