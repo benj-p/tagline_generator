@@ -13,7 +13,7 @@ class OpenAi::TextCompletor < OpenAi::Base
 
   def call
     begin
-      completions = @client.completions(
+      response = @client.completions(
         parameters: {
             model: @model,
             prompt: @content,
@@ -23,13 +23,12 @@ class OpenAi::TextCompletor < OpenAi::Base
             frequency_penalty: 0,
             presence_penalty: 0
         })
-      success = completions['choices'].present?
-      message = success ? completions['choices'].first['text'].strip : nil
+      success = response.code == 200
+      message = success ? response['choices']&.first&.dig("text")&.strip : nil
     rescue
-      # TODO: Log exceptions
-      success = false
+      success, message = false, nil
     end
-      
+
     { success: success, message: message }
   end
 end

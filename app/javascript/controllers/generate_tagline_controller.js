@@ -26,7 +26,9 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         if (!data.success) {
-          data.tagline = "Uh oh, looks like our 🤖 is overheating a bit... try again in 30 seconds!"
+          data.tagline = "Uh oh, looks like our 🤖 is overheating a bit... try again later!"
+        } else if (data.success && data.tagline == null) {
+          data.tagline = "Looks like our 🤖 wasn't able to find any tagline this time... try again in 30 seconds!"
         }
         this.taglineTarget.scrollIntoView({behavior: "smooth", block: "center"});
         this.typed = new Typed(this.taglineTarget, {
