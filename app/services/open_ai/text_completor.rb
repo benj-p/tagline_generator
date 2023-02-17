@@ -1,9 +1,14 @@
 class OpenAi::TextCompletor < OpenAi::Base
+  DEFAULT_SETTINGS = {
+    temperature: 1,
+    top_p: 0.8
+  }.freeze
+
   def initialize(content, params = {})
     super(params)
     @content = content
-    @temperature = params[:temperature].to_i || 1
-    @top_p = params[:top_p].to_i || 0.8
+    @temperature = params[:temperature].to_i || DEFAULT_SETTINGS[:temperature]
+    @top_p = params[:top_p].to_i || DEFAULT_SETTINGS[:top_p]
   end
 
   def call
@@ -21,7 +26,7 @@ class OpenAi::TextCompletor < OpenAi::Base
       success = completions['choices'].present?
       message = success ? completions['choices'].first['text'].strip : nil
     rescue
-      # TODO: Log errors
+      # TODO: Log exceptions
       success = false
     end
       

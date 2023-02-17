@@ -15,3 +15,15 @@
  */
  
  @import "font-awesome";
+
+ [data-controller='collapse'] {
+   .fa-caret-right {
+     transform: rotate(0deg);
+     transition: transform 0.1s linear;
+   }
+   
+   .fa-caret-right.open {
+     transform: rotate(90deg);
+     transition: transform 0.1s linear;
+   }
+ }

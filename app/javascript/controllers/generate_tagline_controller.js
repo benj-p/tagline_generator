@@ -28,6 +28,7 @@ export default class extends Controller {
         if (!data.success) {
           data.tagline = "Uh oh, looks like our 🤖 is overheating a bit... try again in 30 seconds!"
         }
+        this.taglineTarget.scrollIntoView({behavior: "smooth", block: "center"});
         this.typed = new Typed(this.taglineTarget, {
           strings: [data.tagline],
           autoStart: true,

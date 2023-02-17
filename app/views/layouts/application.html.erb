@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GptDemo</title>
+    <title>The Tagline Generator</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,10 +12,10 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <main class="container mx-auto mt-16 md:mt-28 px-5 grow">
+    <main class="container mx-auto mt-12 md:mt-16 px-5 grow">
       <%= yield %>
     </main>
-    <footer class="text-center md:text-left text-blue-500 md:bg-blue-500 md:text-white">
+    <footer class="text-center md:text-left text-blue-500 md:bg-blue-500 md:text-white mt-16">
       <div class="container mx-auto my-12 px-5">
         <%= link_to 'https://github.com/benj-p/tagline_generator', target: "_blank", class: "hover:drop-shadow-md" do %>
           <i class="fa-brands fa-github text-4xl"></i>
