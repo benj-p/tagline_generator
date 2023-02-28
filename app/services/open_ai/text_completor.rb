@@ -13,22 +13,28 @@ class OpenAi::TextCompletor < OpenAi::Base
 
   def call
     begin
-      response = @client.completions(
-        parameters: {
-            model: @model,
-            prompt: @content,
-            max_tokens: @max_tokens,
-            temperature: @temperature,
-            top_p: @top_p,
-            frequency_penalty: 0,
-            presence_penalty: 0
-        })
+      response = @client.completions(parameters: set_params)
       success = response.code == 200
       message = success ? response['choices']&.first&.dig("text")&.strip : nil
     rescue
       success, message = false, nil
     end
-
+    
+    TaglineGeneration.create(parameters: set_params, response: response)
     { success: success, message: message }
+  end
+
+  private
+
+  def set_params
+    {
+      model: @model,
+      prompt: @content,
+      max_tokens: @max_tokens,
+      temperature: @temperature,
+      top_p: @top_p,
+      frequency_penalty: 0,
+      presence_penalty: 0
+    }
   end
 end

@@ -20,7 +20,7 @@ module GptDemo
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures: false,
+        request_specs: false,
         view_specs: false,
         helper_specs: false,
         routing_specs: false

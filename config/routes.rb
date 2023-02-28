@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
-  post '/generate_tagline', to: "pages#generate_tagline", as: :generate_tagline
+  post '/generate_tagline', to: "tagline_generations#generate", as: :generate_tagline
 end
