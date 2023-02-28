@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :tagline_generation do
+    association :user
     parameters { {
         "model"=>"text-davinci-003",
         "top_p"=>0,

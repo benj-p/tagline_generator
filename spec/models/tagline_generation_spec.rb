@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe TaglineGeneration, type: :model do
-  it "has a valid factory" do
+  it "is valid with a user, parameters and response" do
     expect(FactoryBot.build(:tagline_generation)).to be_valid
   end
 
-  it "is valid with a parameters and response" do
-    expect(FactoryBot.build(:tagline_generation)).to be_valid
+  it "is valid without a user" do
+    expect(FactoryBot.build(:tagline_generation, user: nil)).to be_valid
   end
   
   it "is invalid without a parameters" do

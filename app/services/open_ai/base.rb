@@ -6,6 +6,7 @@ class OpenAi::Base < ApplicationService
 
   def initialize(params = {})
     @client = OpenAI::Client.new
+    @user = params.delete(:user)
     @model = params[:model] || DEFAULT_SETTINGS[:model]
     @max_tokens = params[:max_tokens] || DEFAULT_SETTINGS[:max_tokens]
   end

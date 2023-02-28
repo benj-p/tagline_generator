@@ -1,4 +1,6 @@
 class TaglineGeneration < ApplicationRecord
+  belongs_to :user, optional: true
+  
   validates :parameters, presence: true
   validates :response, presence: true
   validate :parameters_is_hash, :response_is_hash

@@ -20,7 +20,7 @@ class OpenAi::TextCompletor < OpenAi::Base
       success, message = false, nil
     end
     
-    TaglineGeneration.create(parameters: set_params, response: response)
+    TaglineGeneration.create(parameters: set_params, response: response, user: @user)
     { success: success, message: message }
   end
 
