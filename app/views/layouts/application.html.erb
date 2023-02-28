@@ -22,13 +22,13 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      <%= image_tag current_user.image, size: '30x30', alt: "#{current_user.email}" if current_user.image? %>
-      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
-    <% else %>
-      <%= button_to 'Sign in with Github', omniauth_authorize_path(User, :github), method: :post, data: { turbo: 'false' } %>
-    <% end %>
-
+    <nav class="container mx-auto my-5 px-5 flex justify-end">
+      <% if user_signed_in? %>
+        <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= button_to 'Sign in with <i class="fa-brands fa-github text-4xl ml-2"></i>'.html_safe, omniauth_authorize_path(User, :github), method: :post, data: { turbo: 'false' }, class: 'flex items-center' %>
+      <% end %>
+    </nav>
 
     <main class="container mx-auto mt-12 md:mt-16 px-5 grow">
       <%= yield %>
