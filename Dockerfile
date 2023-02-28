@@ -10,9 +10,12 @@ WORKDIR /rails
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_PATH="vendor/bundle" \
-    BUNDLE_WITHOUT="development:test" \
-    OPEN_AI_SECRET_KEY=fake
+    BUNDLE_WITHOUT="development:test"
 
+# Set fake env values for build
+ENV OPEN_AI_SECRET_KEY=fake \
+    GITHUB_APP_ID=fake \
+    GITHUB_APP_SECRET=fake
 
 # Update gems and preinstall the desired version of bundler
 ARG BUNDLER_VERSION=2.3.16
@@ -40,7 +43,6 @@ RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-
 
 # Final stage for app image
 FROM base
